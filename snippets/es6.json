@@ -1,0 +1,339 @@
+{
+  "import": {
+    "prefix": "imp",
+    "body": ["import ${2:moduleName} from '${1:module}';$0"],
+    "description": "ES6模块, import xxx from xxx"
+  },
+  "importNoModuleName": {
+    "prefix": "imn",
+    "body": ["import '${1:module}';$0"],
+    "description": "ES6模块, import xxx"
+  },
+  "importDestructing": {
+    "prefix": "imd",
+    "body": ["import { $2 } from '${1:module}';$0"],
+    "description": "ES6模块, 例如:import { stat } from 'fs' "
+  },
+  "importEverything": {
+    "prefix": "ime",
+    "body": ["import * as ${2:alias} from '${1:module}';$0"],
+    "description": "ES6模块，导入, 使用alias"
+  },
+  "importAs": {
+    "prefix": "ima",
+    "body": ["import { ${2:originalName} as ${3:alias} } from '${1:module}';$0"],
+    "description": "通过在ES6语法中分配本地别名来导入模块的特定部分"
+  },
+  "require": {
+    "prefix": "rqr",
+    "body": ["require('${1:package}');"],
+    "description": "Require a package"
+  },
+  "requireToConst": {
+    "prefix": "req",
+    "body": ["const ${1:packageName} = require('${1:package}');$0"],
+    "description": "Require a package to const"
+  },
+  "moduleExports": {
+    "prefix": "mde",
+    "body": ["module.exports = {\n\t$0\n};\n"],
+    "description": "Module exports from Common JS, node syntax at ES6"
+  },
+  "exportNamedVariable": {
+    "prefix": "env",
+    "body": ["export const ${1:exportVariable} = ${2:localVariable};\n"],
+    "description": "Export named variable in ES6 syntax"
+  },
+  "exportNamedFunction": {
+    "prefix": "enf",
+    "body": ["export const ${1:functionName} = (${2:params}) => {\n\t$0\n};\n"],
+    "description": "Export named function in ES6 syntax"
+  },
+  "exportDefaultFunction": {
+    "prefix": "edf",
+    "body": ["export default function ${1:${TM_FILENAME_BASE}}(${2:params}) {\n\t$0\n};\n"],
+    "description": "Export default function in ES6 syntax"
+  },
+  "exportClass": {
+    "prefix": "ecl",
+    "body": ["export default class ${1:className} {\n\t$0\n};\n"],
+    "description": "Export default class in ES6 syntax"
+  },
+  "exportClassExtends": {
+    "prefix": "ece",
+    "body": ["export default class ${1:className} extends ${2:baseclassName} {\n\t$0\n};\n"],
+    "description": "Export default class which extends a base one in ES6 syntax"
+  },
+  "constructor": {
+    "prefix": "con",
+    "body": ["constructor(${1:params}) {\n\t${0}\n}"],
+    "description": "Add default constructor in a class in ES6 syntax"
+  },
+  "method": {
+    "prefix": "met",
+    "body": ["${1:methodName}(${2:params}) {\n\t${0}\n}"],
+    "description": "Creates a method inside a class in ES6 syntax"
+  },
+  "propertyGet": {
+    "prefix": "pge",
+    "body": ["get ${1:propertyName}() {\n\treturn this.${0};\n}"],
+    "description": "Creates a getter property inside a class in ES6 syntax"
+  },
+  "propertyset": {
+    "prefix": "pse",
+    "body": ["set ${1:propertyName}(${2:value}) {\n\t${0};\n}"],
+    "description": "Creates a setter property inside a class in ES6 syntax"
+  },
+  "forEach": {
+    "prefix": "fre",
+    "body": ["${1:array}.forEach(${2:currentItem} => {\n\t${0}\n});"],
+    "description": "Creates a forEach statement in ES6 syntax"
+  },
+  "for of": {
+    "prefix": "fof",
+    "body": ["for (const ${1:item} of ${2:object}) {\n\t${0}\n}"],
+    "description": "ES6 借鉴 C++、Java、C# 和 Python 语言，引入了for...of循环，作为遍历所有数据结构的统一的方法。 for...of循环可以使用的范围包括数组、Set 和 Map 结构、某些类似数组的对象（比如arguments对象、DOM NodeList 对象）、后文的 Generator 对象，以及字符串。"
+  },
+  "for in": {
+    "prefix": "fin",
+    "body": ["for (const ${1:item} in ${2:object}) {\n\t${0}\n}"],
+    "description": "for...in 语句循环一个指定的变量来循环一个对象所有可枚举的属性。JavaScript 会为每一个不同的属性执行指定的语句。"
+  },
+  "anonymousFunction": {
+    "prefix": "anfn",
+    "body": ["(${1:params}) => {\n\t${2}\n}"],
+    "description": "Creates an anonymous function in ES6 syntax"
+  },
+  "namedFunction": {
+    "prefix": "nfn",
+    "body": ["const ${1:name} = (${2:params}) => {\n\t${3}\n}"],
+    "description": "Creates a named function in ES6 syntax"
+  },
+  "destructingObject": {
+    "prefix": "dob",
+    "body": ["const {${2:propertyName}} = ${1:objectToDestruct};"],
+    "description": "对象的解构赋值"
+  },
+  "destructingArray": {
+    "prefix": "dar",
+    "body": ["const [${2:propertyName}] = ${1:arrayToDestruct};"],
+    "description": "数组的解构赋值"
+  },
+  "setInterval": {
+    "prefix": "sti",
+    "body": ["setInterval(() => {\n\t${2}\n}, ${0:intervalInms});"],
+    "description": "ES6语法中以指定的间隔执行给定的函数"
+  },
+  "setTimeOut": {
+    "prefix": "sto",
+    "body": ["setTimeout(() => {\n\t${2}\n}, ${1:delayInms});"],
+    "description": "ES6语法中，在指定的延迟之后执行给定的函数"
+  },
+  "promise": {
+    "prefix": "prom",
+    "body": ["return new Promise((resolve, reject) => {\n\t${1}\n});"],
+    "description": "ES6语法, 返回异步"
+  },
+  "promise.all": {
+    "prefix": "proma",
+    "body": ["const ${1:p} = Promise.all([${2:func1},${3:func2}]);"],
+    "description": "ES6语法, Promise.all()方法用于将多个 Promise 实例，包装成一个新的 Promise 实例。"
+  },
+  "promise.all.then.catch": {
+    "prefix": "patc",
+    "body": [
+      "const ${1:p} = Promise.all([${2:func1},${3:func2}]).then((${4:result}) => {\n\t${5}\n}).catch((${6:err}) => {\n\t${7}\n});"
+    ],
+    "description": "ES6语法, Promise.all()方法用于将多个 Promise 实例，包装成一个新的 Promise 实例。"
+  },
+  "const promise": {
+    "prefix": "cprom",
+    "body": ["const promise = new Promise(function(resolve, reject) {\n\t${1}\n});"],
+    "description": ""
+  },
+  "thenCatch": {
+    "prefix": "thenc",
+    "body": [".then((${1:result}) => {\n\t${2}\n}).catch((${3:err}) => {\n\t${4}\n});"],
+    "description": "添加then和.catch方法"
+  },
+  "thenCatchFinally": {
+    "prefix": "thencf",
+    "body": [".then((${1:result}) => {\n\t${2}\n}).catch((${3:err}) => {\n\t${4}\n}).finally(() => {\n\t${5}\n});"],
+    "description": "添加then和.catch方法"
+  },
+  "consoleAssert": {
+    "prefix": "cas",
+    "body": ["console.assert(${1:expression}, ${2:object});"],
+    "description": "如果断言为 false，则在信息到控制台输出错误信息。"
+  },
+  "consoleClear": {
+    "prefix": "ccl",
+    "body": ["console.clear();"],
+    "description": "清除控制台上的信息。"
+  },
+  "consoleCount": {
+    "prefix": "cco",
+    "body": ["console.count(${1:label});"],
+    "description": "记录 count() 调用次数，一般用于计数。"
+  },
+  "consoleDebug": {
+    "prefix": "cdb",
+    "body": ["console.debug(${1:object});"],
+    "description": "在控制台中显示一条消息。同时在Safari中显示一个蓝色的右箭头图标和日志消息"
+  },
+  "consoleDir": {
+    "prefix": "cdi",
+    "body": ["console.dir(${1:object});"],
+    "description": "Prints a JavaScript representation of the specified object"
+  },
+  "consoleError": {
+    "prefix": "cer",
+    "body": ["console.error(${1:object});"],
+    "description": "输出错误信息到控制台"
+  },
+  "consoleGroup": {
+    "prefix": "cgr",
+    "body": ["console.group('${1:label}');"],
+    "description": "console.group() 方法用于设置分组信息的起始位置，该位置之后的所有信息将写入分组。"
+  },
+  "consoleGroupEnd": {
+    "prefix": "cge",
+    "body": ["console.groupEnd();"],
+    "description": "console.groupEnd() 方法用于结束分组标签。"
+  },
+  "consoleLog": {
+    "prefix": "clg",
+    "body": ["console.log(${1:object});"],
+    "description": "控制台输出一条信息"
+  },
+  "consoleLogObject": {
+    "prefix": "clo",
+    "body": ["console.log('${1:object} :>> ', ${1:object});"],
+    "description": "控制台输出一条信息"
+  },
+  "consoleTrace": {
+    "prefix": "ctr",
+    "body": ["console.trace(${1:object});"],
+    "description": "显示当前执行的代码在堆栈中的调用路径。"
+  },
+  "consoleWarn": {
+    "prefix": "cwa",
+    "body": ["console.warn(${1:object});"],
+    "description": "输出警告信息，信息最前面加一个黄色三角，表示警告"
+  },
+  "consoleInfo": {
+    "prefix": "cin",
+    "body": ["console.info(${1:object});"],
+    "description": "控制台输出一条信息"
+  },
+  "consoleTable": {
+    "prefix": "clt",
+    "body": ["console.table(${1:object});"],
+    "description": "以表格形式显示数据。"
+  },
+  "consoleTime": {
+    "prefix": "cti",
+    "body": ["console.time(${1:object});"],
+    "description": "计时器，开始计时间，与 timeEnd() 联合使用，用于算出一个操作所花费的准确时间。"
+  },
+  "consoleTimeEnd": {
+    "prefix": "cte",
+    "body": ["console.timeEnd(${1:object});"],
+    "description": "计时结束"
+  },
+  "includes": {
+    "prefix": "inc",
+    "body": ["${1:object}.includes(${2:object})"],
+    "description": "includes(): 返回布尔值，表示是否找到了参数字符串"
+  },
+  "startsWith": {
+    "prefix": "sw",
+    "body": ["${1:object}.startsWith(${2:object})"],
+    "description": "startsWith()：返回布尔值，表示参数字符串是否在原字符串的头部。"
+  },
+  "endsWith": {
+    "prefix": "ew",
+    "body": ["${1:object}.endsWith(${2:object})"],
+    "description": "endsWith()：返回布尔值，表示参数字符串是否在原字符串的尾部"
+  },
+  "repeat": {
+    "prefix": "repeat",
+    "body": ["${1:object}.repeat(${2:number})"],
+    "description": "repeat方法返回一个新字符串，表示将原字符串重复n次。"
+  },
+  "Object.is()": {
+    "prefix": "ois",
+    "body": ["Object.is(${1:object}, ${2:object})"],
+    "description": "它用来比较两个值是否严格相等，与严格比较运算符（===）的行为基本一致。"
+  },
+  "Object.assign()": {
+    "prefix": "oa",
+    "body": ["Object.assign(${1:target}, ${2:source});"],
+    "description": "Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target)."
+  },
+  "Object.keys()": {
+    "prefix": "okeys",
+    "body": ["Object.keys(${1:object});"],
+    "description": "返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键名。"
+  },
+  "Object.values()": {
+    "prefix": "oval",
+    "body": ["Object.values(${1:object});"],
+    "description": "Object.values方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值。"
+  },
+  "Object.entries()": {
+    "prefix": "oe",
+    "body": ["Object.entries(${1:object});"],
+    "description": "Object.entries()方法返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组。"
+  },
+  "Object.fromEntries()": {
+    "prefix": "ofe",
+    "body": ["Object.fromEntries(${1:arr});"],
+    "description": "Object.fromEntries()方法是Object.entries()的逆操作，用于将一个键值对数组转为对象。"
+  },
+  "Array.from": {
+    "prefix": "afrom",
+    "body": ["Array.from(${1:object});"],
+    "description": "Array.from方法用于将两类对象转为真正的数组：类似数组的对象（array-like object）和可遍历（iterable）的对象（包括 ES6 新增的数据结构 Set 和 Map）"
+  },
+  "Array.of": {
+    "prefix": "aof",
+    "body": ["Array.of($1);"],
+    "description": "Array.of方法用于将一组值，转换为数组"
+  },
+  "Array find": {
+    "prefix": "afind",
+    "body": ["${1:ArrayName}.find($0);"],
+    "description": "数组实例的find方法，用于找出第一个符合条件的数组成员"
+  },
+  "Array findIndex": {
+    "prefix": "afi",
+    "body": ["${1:ArrayName}.findIndex($0);"],
+    "description": "数组实例的findIndex方法的用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。"
+  },
+  "Array fill": {
+    "prefix": "afill",
+    "body": ["${1:ArrayName}.fill(${2:value});"],
+    "description": "fill方法使用给定值，填充一个数组"
+  },
+  "async function declaration": {
+    "prefix": "afd|asyncfd",
+    "body": ["async function ${1:func}() {$0};"],
+    "description": "async 函数声明"
+  },
+  "async function expression": {
+    "prefix": "afe|asyncfe",
+    "body": ["const ${1:name} = async ${2:function}() {$0};"],
+    "description": "async 函数表达式"
+  },
+  "async arrow functions": {
+    "prefix": "aaf|asyncaf",
+    "body": ["const ${1:name} = async ($2) => {$0};"],
+    "description": "async 箭头函数"
+  },
+  "async object": {
+    "prefix": "oaf|aof|asyncob",
+    "body": ["let obj = { async ${1:func}() {$2} };$0"],
+    "description": "async 对象的方法"
+  }
+}

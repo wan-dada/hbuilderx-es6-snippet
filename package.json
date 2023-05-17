@@ -1,0 +1,43 @@
+{
+  "name": "es6-snippet",
+  "description": "常用的es6代码块",
+  "displayName": "es6-snippet - 常用的es6代码块",
+  "version": "0.0.1",
+  "publisher": "OneOne",
+  "engines": {
+    "HBuilderX": "^2.7.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension",
+  "activationEvents": [
+    "*"
+  ],
+  "contributes": {
+    "commands": [],
+    "snippets": [{
+      "language": "html",
+      "path": "./snippets/es6.json"
+    },{
+      "language": "html_es6",
+      "path": "./snippets/es6.json"
+    },{
+      "language": "javascript",
+      "path": "./snippets/es6.json"
+    },{
+      "language": "javascript_es6",
+      "path": "./snippets/es6.json"
+    },{
+      "language": "typescript",
+      "path": "./snippets/es6.json"
+    }],
+    "menus": {
+      "editor/context": []
+    }
+  },
+  "extensionDependencies": [
+    "plugin-manager"
+  ],
+  "dependencies": {}
+}
